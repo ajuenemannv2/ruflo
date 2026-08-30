@@ -3323,6 +3323,7 @@ export async function listEntries(options: {
     id: string;
     key: string;
     namespace: string;
+    value: string;
     size: number;
     accessCount: number;
     createdAt: string;
@@ -3425,6 +3426,7 @@ export async function listEntries(options: {
       id: string;
       key: string;
       namespace: string;
+      value: string;
       size: number;
       accessCount: number;
       createdAt: string;
@@ -3456,6 +3458,7 @@ export async function listEntries(options: {
           id: options.includeContent ? String(id) : String(id).substring(0, 20),
           key: key || String(id).substring(0, 15),
           namespace: ns || 'default',
+          value: content ?? '',
           size: (content || '').length,
           accessCount: accessCount || 0,
           createdAt: createdAt || new Date().toISOString(),
