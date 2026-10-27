@@ -1,0 +1,100 @@
+/* Phone controller. One column, big thumbs-friendly targets. */
+
+body { padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom); }
+
+#bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+}
+.me { display: flex; align-items: center; gap: 10px; font-weight: 900; min-width: 0; }
+.me .swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--c);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  flex: none;
+}
+.me-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.me-score { font-family: var(--display); color: var(--yellow); }
+#bar .timer { font-size: 1.1rem; flex: none; }
+
+main#app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.center { text-align: center; }
+.muted { color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: 10px; }
+
+.logo { font-size: clamp(3.2rem, 18vw, 5rem); margin: 4vh 0 2vh; }
+
+form.join { display: flex; flex-direction: column; gap: 10px; }
+form.join label { font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+#code { font-family: var(--display); font-size: 2rem; letter-spacing: 0.3em; text-align: center; text-transform: uppercase; }
+form.join button { margin-top: 14px; font-size: 1.4rem; }
+.host-link a { color: var(--yellow); font-weight: 800; }
+
+.step { margin: 0; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 900; font-size: 0.85rem; color: var(--muted); }
+.prompt {
+  background: #fff;
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 0 var(--yellow);
+}
+
+form.answer, .vote { display: flex; flex-direction: column; gap: 14px; }
+.row { display: flex; justify-content: space-between; align-items: center; }
+.counter { color: var(--muted); font-weight: 800; font-size: 0.9rem; }
+button.small { padding: 10px 14px; font-size: 0.95rem; }
+
+.options { display: flex; flex-direction: column; gap: 14px; }
+.option {
+  background: var(--bg2);
+  color: var(--text);
+  box-shadow: 0 6px 0 #12061f;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  font-size: 1.25rem;
+  padding: 22px 18px;
+  min-height: 84px;
+  overflow-wrap: anywhere;
+}
+.option.picked { background: var(--yellow); color: var(--ink); border-color: var(--yellow); opacity: 1; }
+
+.wait { display: flex; flex-direction: column; align-items: center; gap: 20px; padding-top: 6vh; text-align: center; }
+.wait button { width: 100%; }
+.wait-msg { font-size: 1.4rem; font-weight: 900; margin: 0; }
+.blob {
+  width: 120px;
+  height: 120px;
+  background: var(--c);
+  border-radius: 42% 58% 61% 39% / 45% 39% 61% 55%;
+  animation: morph 4s ease-in-out infinite;
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.medal { font-size: 6rem; margin: 0; }
+
+@keyframes morph {
+  0%, 100% { border-radius: 42% 58% 61% 39% / 45% 39% 61% 55%; transform: rotate(0); }
+  50% { border-radius: 60% 40% 35% 65% / 60% 55% 45% 40%; transform: rotate(20deg) scale(1.05); }
+}
